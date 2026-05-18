@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Haroon Haneef — AI Automation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════
+   TOKENS
+═══════════════════════════════════ */
+:root{
+  --cream:#F7F4F0; --white:#FDFCFA;
+  --ink:#1C1917;   --ink2:#44403C;
+  --muted:#78716C; --faint:#E7E2DC;
+  --accent:#C84B2F; --pale:#FBF0ED; --pale2:#F7EDE9;
+  --green:#2E7D4F;  --green2:#D1FAE5;
+  --f:'Poppins',sans-serif;
+  --ease:cubic-bezier(.22,.68,0,1.2);
+  --ease2:cubic-bezier(.4,0,.2,1);
+  --px:1.5rem;
+}
+@media(min-width:640px){:root{--px:2.5rem}}
+@media(min-width:1024px){:root{--px:4rem}}
+
+/* ═══════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--f);cursor:pointer}
+
+/* ═══════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════ */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease2),transform .6s var(--ease2)}
+.rev.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+nav{
+  position:fixed;inset:0 0 auto;z-index:300;
+  background:rgba(247,244,240,.94);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--faint);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--px);height:56px;max-width:1120px;margin:0 auto;
+}
+.nav-logo{font-size:.75rem;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:none}
+@media(min-width:768px){
+  .nav-links{display:flex;gap:1.6rem;list-style:none}
+  .nav-links a{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative}
+  .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-links a:hover::after{transform:scaleX(1)}
+}
+.nav-pill{
+  display:flex;align-items:center;gap:.4rem;
+  background:var(--green2);border:1px solid #A7F3D0;
+  padding:.25rem .8rem;border-radius:100px;
+  font-size:.62rem;font-weight:600;letter-spacing:.06em;color:var(--green);
+}
+.blink{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ═══════════════════════════════════
+   SHARED LAYOUT
+═══════════════════════════════════ */
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--px)}
+section{border-top:1px solid var(--faint)}
+.sec-pad{padding:4rem 0}
+@media(min-width:768px){.sec-pad{padding:6rem 0}}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:.75rem;
+}
+.sec-tag::before{content:'';width:18px;height:2px;background:var(--accent)}
+.sec-h{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.15;margin-bottom:.6rem}
+.sec-h em{font-style:italic;font-weight:300;color:var(--accent)}
+.sec-sub{font-size:.88rem;font-weight:300;color:var(--muted);line-height:1.8;max-width:520px;margin-bottom:.5rem}
+
+/* ═══════════════════════════════════
+   BUTTONS
+═══════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:.75rem 1.6rem;border-radius:8px;border:1.5px solid transparent;
+  transition:all .22s var(--ease);
+}
+.btn-solid{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-solid:hover{background:#B03D24;border-color:#B03D24;transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,75,47,.28)}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--faint)}
+.btn-outline:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-full{width:100%;display:flex}
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+#hero{border-top:none;background:var(--white)}
+.hero-inner{
+  padding-top:calc(56px + 2.5rem);
+  padding-bottom:3rem;
+  display:flex;flex-direction:column;gap:.1rem;
+}
+@media(min-width:768px){.hero-inner{padding-top:calc(56px + 3.5rem);padding-bottom:4rem}}
+
+.hero-overline{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:1.2rem;
+}
+.hero-overline::before{content:'';width:22px;height:2px;background:var(--accent)}
+
+.hero-name{
+  font-size:clamp(2.4rem,8vw,6rem);
+  font-weight:800;line-height:1.0;letter-spacing:-.03em;color:var(--ink);
+  margin-bottom:1rem;
+}
+.hero-name .italic{display:block;font-style:italic;font-weight:300;color:var(--accent)}
+
+.hero-sub{
+  font-size:clamp(.9rem,2.5vw,1.1rem);font-weight:300;color:var(--muted);
+  line-height:1.8;max-width:560px;margin-bottom:1.4rem;
+}
+.hero-sub strong{color:var(--ink);font-weight:600}
+
+.hero-phone{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.85rem;font-weight:500;color:var(--ink2);
+  padding:.5rem 1.1rem;border:1.5px solid var(--faint);border-radius:100px;
+  background:var(--cream);margin-bottom:1.4rem;
+  transition:all .22s var(--ease);width:fit-content;
+}
+.hero-phone:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,75,47,.12)}
+
+.hero-btns{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem}
+.hero-btns .btn{width:100%}
+@media(min-width:480px){.hero-btns{flex-direction:row;flex-wrap:wrap}.hero-btns .btn{width:auto}}
+
+/* hero stats */
+.hero-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1.5px solid var(--faint);border-radius:12px;overflow:hidden;
+  background:var(--cream);margin-top:1.8rem;
+}
+@media(min-width:640px){.hero-stats{grid-template-columns:repeat(4,1fr)}}
+.hstat{
+  padding:1.2rem 1rem;
+  border-right:1px solid var(--faint);
+  border-bottom:1px solid var(--faint);
+  transition:background .2s;
+}
+.hstat:nth-child(2n){border-right:none}
+.hstat:nth-child(3),.hstat:nth-child(4){border-bottom:none}
+@media(min-width:640px){
+  .hstat{border-right:1px solid var(--faint);border-bottom:none}
+  .hstat:last-child{border-right:none}
+  .hstat:nth-child(2n){border-right:1px solid var(--faint)}
+}
+.hstat:hover{background:var(--pale)}
+.hstat-n{font-size:clamp(1.3rem,4vw,2rem);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1}
+.hstat-n sup{font-size:.45em;vertical-align:super;font-weight:700}
+.hstat-l{font-size:.58rem;font-weight:500;color:var(--muted);margin-top:.25rem;line-height:1.4;text-transform:uppercase;letter-spacing:.04em}
+
+/* ═══════════════════════════════════
+   AI EXPERIENCE SECTION
+═══════════════════════════════════ */
+#ai-exp{background:var(--white)}
+.ai-grid{
+  display:grid;grid-template-columns:1fr;gap:1.2rem;
+  margin-top:2rem;
+}
+@media(min-width:900px){.ai-grid{grid-template-columns:1fr 380px;gap:2rem}}
+
+/* dark feature card */
+.ai-feature{
+  background:var(--ink);border-radius:16px;padding:2rem;
+  color:#fff;position:relative;overflow:hidden;
+}
+.ai-feature::before{
+  content:'3+';position:absolute;right:-10px;top:-15px;
+  font-size:8rem;font-weight:800;color:rgba(255,255,255,.04);
+  line-height:1;pointer-events:none;letter-spacing:-.04em;
+}
+.ai-feature-tag{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pale2);margin-bottom:.8rem}
+.ai-feature h3{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.7rem;line-height:1.25}
+.ai-feature p{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:1.2rem}
+.ai-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.2rem}
+.aichip{
+  font-size:.6rem;font-weight:600;padding:.22rem .7rem;border-radius:100px;
+  background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.12);
+  transition:all .2s;
+}
+.aichip:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.ai-feature-img{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;margin-top:1rem;border:1px solid rgba(255,255,255,.1)}
+.ai-feature-img img{width:100%;height:100%;object-fit:cover;opacity:.8}
+.ai-stats-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.2rem}
+.ai-stat-box{background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;border:1px solid rgba(255,255,255,.08);transition:background .2s}
+.ai-stat-box:hover{background:rgba(255,255,255,.1)}
+.ai-stat-box .n{font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.ai-stat-box .n sup{font-size:.45em;vertical-align:super}
+.ai-stat-box .l{font-size:.6rem;font-weight:500;color:rgba(255,255,255,.5);margin-top:.15rem;text-transform:uppercase;letter-spacing:.04em}
+
+/* right side cards */
+.ai-sides{display:flex;flex-direction:column;gap:.8rem}
+.ai-side{
+  background:var(--cream);border:1.5px solid var(--faint);border-radius:12px;
+  padding:1.2rem;transition:all .25s var(--ease);position:relative;overflow:hidden;
+}
+.ai-side::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .3s var(--ease)}
+.ai-side:hover{border-color:var(--pale2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,75,47,.08)}
+.ai-side:hover::before{transform:scaleY(1)}
+.ai-side-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.ai-side-icon{width:34px;height:34px;border-radius:8px;background:var(--pale);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.ai-side-title{font-size:.85rem;font-weight:600;color:var(--ink)}
+.ai-side-cat{font-size:.6rem;font-weight:600;color:var(--accent);letter-spacing:.06em}
+.ai-side-desc{font-size:.75rem;font-weight:300;color:var(--muted);line-height:1.65}
+
+/* ═══════════════════════════════════
+   PROJECTS
+═══════════════════════════════════ */
+#projects{background:var(--cream)}
+.proj-grid{
+  display:grid;grid-template-columns:1fr;gap:1.2rem;
+  margin-top:2rem;
+}
+@media(min-width:580px){.proj-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.proj-grid{grid-template-columns:repeat(3,1fr)}}
+
+.proj-card{
+  background:var(--white);border:1.5px solid var(--faint);border-radius:14px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:all .28s var(--ease);cursor:pointer;
+}
+.proj-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(28,25,23,.1);border-color:var(--pale2)}
+.proj-card.feat{grid-column:1/-1}
+@media(min-width:580px){.proj-card.feat .proj-img{aspect-ratio:21/9}}
+
+.proj-img{
+  width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--pale);
+  position:relative;flex-shrink:0;
+}
+.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease2)}
+.proj-card:hover .proj-img img{transform:scale(1.05)}
+.proj-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,75,47,.1),transparent 60%);opacity:0;transition:opacity .3s}
+.proj-card:hover .proj-img-overlay{opacity:1}
+
+.proj-body{padding:1.25rem 1.25rem .9rem;display:flex;flex-direction:column;flex:1;gap:.45rem}
+.proj-cat{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.proj-name{font-size:1rem;font-weight:700;color:var(--ink);line-height:1.3}
+.proj-desc{font-size:.78rem;font-weight:300;color:var(--muted);line-height:1.7;flex:1}
+.proj-chips{display:flex;flex-wrap:wrap;gap:.3rem;padding:.9rem 0 .4rem}
+.pchip{font-size:.58rem;font-weight:500;padding:.15rem .55rem;border-radius:100px;background:var(--cream);border:1px solid var(--faint);color:var(--muted)}
+
+/* full width CTA button on card */
+.proj-cta{
+  margin:0;
+  width:100%;display:flex;align-items:center;justify-content:center;gap:.4rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:.85rem 1rem;border-radius:0 0 12px 12px;
+  border:none;border-top:1.5px solid var(--faint);
+  background:var(--cream);color:var(--ink);
+  transition:all .22s var(--ease);
+}
+.proj-card:hover .proj-cta{background:var(--ink);color:#fff;border-color:var(--ink)}
+.proj-cta.accent-btn{background:var(--pale);color:var(--accent);border-top-color:var(--pale2)}
+.proj-card:hover .proj-cta.accent-btn{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ═══════════════════════════════════
+   MODAL
+═══════════════════════════════════ */
+.modal-bg{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(28,25,23,.6);backdrop-filter:blur(8px);
+  display:none;align-items:flex-end;justify-content:center;
+  padding:0;
+}
+@media(min-width:640px){.modal-bg{align-items:center;padding:1.5rem}}
+.modal-bg.on{display:flex}
+.modal-box{
+  background:var(--white);width:100%;max-height:92vh;overflow-y:auto;
+  border-radius:20px 20px 0 0;
+  animation:slideUp .28s var(--ease);
+}
+@media(min-width:640px){
+  .modal-box{max-width:860px;border-radius:16px;max-height:88vh;animation:popIn .25s var(--ease)}
+}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes popIn{from{opacity:0;transform:scale(.95) translateY(12px)}to{opacity:1;transform:none}}
+
+.modal-handle{width:40px;height:4px;background:var(--faint);border-radius:2px;margin:12px auto 0}
+@media(min-width:640px){.modal-handle{display:none}}
+
+.modal-hd{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:1rem;padding:1.2rem var(--px) 1rem;
+  border-bottom:1px solid var(--faint);
+  position:sticky;top:0;background:var(--white);z-index:2;
+  border-radius:20px 20px 0 0;
+}
+@media(min-width:640px){.modal-hd{padding:1.6rem 1.8rem 1.2rem;border-radius:16px 16px 0 0}}
+.m-cat{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.m-title{font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1.2}
+@media(min-width:640px){.m-title{font-size:1.25rem}}
+.m-close{
+  width:32px;height:32px;border-radius:50%;background:var(--cream);border:none;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  color:var(--muted);flex-shrink:0;transition:all .2s;
+}
+.m-close:hover{background:var(--accent);color:#fff}
+
+.modal-bd{padding:1.2rem var(--px);display:flex;flex-direction:column;gap:1.1rem}
+@media(min-width:640px){.modal-bd{padding:1.8rem 2rem;gap:1.3rem}}
+
+.m-hero-img{width:100%;aspect-ratio:16/7;border-radius:10px;overflow:hidden;background:var(--pale);border:1px solid var(--faint)}
+.m-hero-img img{width:100%;height:100%;object-fit:cover}
+
+.m-desc{font-size:.82rem;font-weight:300;color:var(--muted);line-height:1.85;padding-left:.9rem;border-left:3px solid var(--accent)}
+
+.m-stack-row{display:flex;flex-wrap:wrap;gap:.3rem}
+.mchip{font-size:.6rem;font-weight:500;padding:.18rem .65rem;border-radius:100px;background:var(--cream);border:1px solid var(--faint);color:var(--muted)}
+
+/* sub-project cards grid inside modal */
+.m-sub-label{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.m-cards{display:grid;grid-template-columns:1fr;gap:.8rem}
+@media(min-width:540px){.m-cards{grid-template-columns:1fr 1fr}}
+.m-card{
+  border:1.5px solid var(--faint);border-radius:10px;overflow:hidden;background:var(--cream);
+  transition:all .22s var(--ease);
+}
+.m-card:hover{border-color:var(--pale2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.m-card-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--pale)}
+.m-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.m-card:hover .m-card-img img{transform:scale(1.04)}
+.m-card-body{padding:.8rem .9rem}
+.m-card-name{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;line-height:1.3}
+.m-card-desc{font-size:.7rem;font-weight:300;color:var(--muted);line-height:1.6}
+.m-card-link{
+  display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;
+  font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+}
+.m-card-link:hover{text-decoration:underline}
+
+.m-app-list{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
+.m-app-tag{font-size:.68rem;font-weight:500;padding:.3rem .8rem;border-radius:100px;background:var(--pale);border:1.5px solid var(--pale2);color:var(--accent)}
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;background:var(--accent);padding:.75rem 1.4rem;border-radius:8px;
+  transition:all .22s var(--ease);border:none;
+}
+.m-bottom-link:hover{background:#B03D24;transform:translateY(-2px)}
+
+/* ═══════════════════════════════════
+   SKILLS
+═══════════════════════════════════ */
+#skills{background:var(--white)}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:2rem}
+@media(min-width:768px){.skills-grid{grid-template-columns:repeat(3,1fr);gap:1rem}}
+.sk-card{border:1.5px solid var(--faint);border-radius:12px;padding:1.4rem;background:var(--cream);transition:all .25s var(--ease)}
+.sk-card:hover{border-color:var(--pale2);background:var(--white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.sk-name{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid var(--faint)}
+.ski{display:flex;align-items:center;gap:.45rem;padding:.18rem 0;font-size:.73rem;font-weight:400;color:var(--muted)}
+.ski.core{color:var(--ink);font-weight:500}
+.sdot{width:5px;height:5px;border-radius:50%;background:var(--faint);flex-shrink:0}
+.ski.core .sdot{background:var(--accent)}
+
+/* ═══════════════════════════════════
+   EXPERIENCE
+═══════════════════════════════════ */
+#experience{background:var(--cream)}
+.exp-label{
+  font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);
+  margin:1.8rem 0 .8rem;display:flex;align-items:center;gap:.6rem;
+}
+.exp-label::after{content:'';flex:1;height:1px;background:var(--faint)}
+.exp-cards{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.2rem}
+.exp-card{background:var(--white);border:1.5px solid var(--faint);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.exp-card:hover{border-color:var(--pale2)}
+.exp-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.25rem 1.4rem;cursor:pointer;transition:background .18s}
+.exp-hd:hover{background:var(--pale)}
+.exp-co{font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.15rem}
+.exp-role{font-size:.72rem;font-weight:600;color:var(--accent)}
+.exp-badge{display:inline-flex;font-size:.56rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.18rem .6rem;border-radius:100px;background:var(--pale);color:var(--accent);border:1px solid var(--pale2);margin-top:.3rem;width:fit-content}
+.exp-right{text-align:right;flex-shrink:0}
+.exp-period{font-size:.68rem;color:var(--muted)}
+.exp-loc{font-size:.62rem;color:var(--muted);margin-top:2px}
+.exp-chevron{font-size:.75rem;color:var(--muted);margin-top:.2rem;transition:transform .25s}
+.exp-chevron.open{transform:rotate(180deg)}
+.exp-body{display:none;padding:0 1.4rem 1.3rem;border-top:1px solid var(--faint)}
+.exp-body.on{display:block}
+.exp-ul{list-style:none;margin-top:.7rem}
+.exp-ul li{font-size:.78rem;font-weight:300;color:var(--muted);padding:.35rem 0;border-bottom:1px solid var(--faint);display:flex;gap:.6rem;line-height:1.55}
+.exp-ul li::before{content:'→';color:var(--pale2);flex-shrink:0;font-weight:700}
+
+/* past experience */
+.past-box{background:var(--white);border:1.5px solid var(--faint);border-radius:12px;overflow:hidden}
+.past-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 1.4rem;background:none;border:none;text-align:left}
+.past-toggle:hover{background:var(--pale)}
+.past-toggle-l{}
+.past-toggle-title{font-size:.85rem;font-weight:600;color:var(--ink)}
+.past-toggle-sub{font-size:.68rem;font-weight:400;color:var(--muted);margin-top:.1rem}
+.past-chevron{font-size:.75rem;color:var(--muted);flex-shrink:0;transition:transform .25s}
+.past-chevron.open{transform:rotate(180deg)}
+.past-entries{display:none;border-top:1px solid var(--faint);padding:.4rem 0}
+.past-entries.on{display:block}
+.past-row{padding:1rem 1.4rem;border-bottom:1px solid var(--faint)}
+.past-row:last-child{border-bottom:none}
+.past-row-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.past-co{font-size:.85rem;font-weight:600;color:var(--ink)}
+.past-role-t{font-size:.72rem;font-weight:400;color:var(--muted);margin-top:.1rem}
+.past-period-t{font-size:.68rem;color:var(--muted);text-align:right;flex-shrink:0}
+.past-note-t{font-size:.6rem;color:var(--accent);font-weight:600;text-align:right;margin-top:2px}
+.past-bullets{list-style:none;margin-top:.6rem}
+.past-bullets li{font-size:.75rem;font-weight:300;color:var(--muted);padding:.28rem 0;border-bottom:1px solid var(--faint);display:flex;gap:.55rem;line-height:1.5}
+.past-bullets li::before{content:'→';color:var(--faint);flex-shrink:0;font-weight:700}
+.past-bullets li:last-child{border-bottom:none}
+
+/* ═══════════════════════════════════
+   CONTACT
+═══════════════════════════════════ */
+#contact{background:var(--ink);border-top:none}
+.contact-inner{padding:4rem 0}
+@media(min-width:768px){.contact-inner{padding:6rem 0}}
+#contact .sec-tag{color:var(--pale2)}
+#contact .sec-tag::before{background:var(--pale2)}
+#contact .sec-h{color:#fff}
+#contact .sec-h em{color:var(--pale2)}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-top:2rem}
+@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr;gap:3.5rem}}
+.contact-img{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);margin-bottom:1.4rem}
+.contact-img img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.contact-body{font-size:.85rem;font-weight:300;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:1.4rem}
+.avail-pill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(46,125,79,.2);border:1px solid rgba(46,125,79,.4);padding:.5rem 1rem;border-radius:100px;font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6EE7A0}
+.clinks{display:flex;flex-direction:column;gap:.7rem}
+.clink{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.3rem;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);transition:all .22s var(--ease)}
+.clink:hover{background:rgba(200,75,47,.18);border-color:rgba(200,75,47,.35);transform:translateX(4px)}
+.clink-icon{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(255,255,255,.7);flex-shrink:0}
+.clink-lbl{font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.clink-val{font-size:.82rem;font-weight:500;color:#fff;margin-top:1px}
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer{border-top:1px solid rgba(255,255,255,.07);background:var(--ink);padding:1.6rem var(--px)}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.ft{font-size:.62rem;font-weight:400;color:rgba(255,255,255,.3)}
+.ft span{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">Portfolio <span>Website</span></span>
+    <ul class="nav-links">
+      <li><a href="#ai-exp">AI Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Stack</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-pill"><div class="blink"></div>Open to hire</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-overline rev">AI Automation Engineer · Chennai, India</div>
+      <h1 class="hero-name rev d1">
+        Mohamed Haroon
+        <span class="italic">Haneef.</span>
+      </h1>
+      <p class="hero-sub rev d2">
+        <strong>Building AI systems that replace manual work.</strong> 7 years total experience,
+        3+ years focused on AI automation — n8n pipelines, Claude-powered tools,
+        chatbots, and self-hosted infrastructure. I ship production systems, not demos.
+      </p>
+      <a href="tel:+917010069287" class="hero-phone rev d2">📞 +91 70100 69287</a>
+      <div class="hero-btns rev d3">
+        <a href="#projects" class="btn btn-solid">See my work →</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+      <div class="hero-stats rev d4">
+        <div class="hstat"><div class="hstat-n">3<sup>+</sup></div><div class="hstat-l">Years AI<br/>automation</div></div>
+        <div class="hstat"><div class="hstat-n">30<sup>+</sup></div><div class="hstat-l">AI apps<br/>shipped</div></div>
+        <div class="hstat"><div class="hstat-n">$7.2M</div><div class="hstat-l">Ad spend<br/>managed</div></div>
+        <div class="hstat"><div class="hstat-n">20<sup>+</sup></div><div class="hstat-l">Clients<br/>served</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI EXPERIENCE -->
+<section id="ai-exp">
+  <div class="wrap sec-pad">
+    <div class="sec-tag rev">Core Expertise</div>
+    <h2 class="sec-h rev d1">3+ Years in <em>AI Automation</em></h2>
+    <p class="sec-sub rev d2">My primary focus. Building systems that actually run — Claude AI, n8n, Typebot, and self-hosted infra powering real business operations.</p>
+    <div class="ai-grid">
+      <div class="ai-feature rev">
+        <div class="ai-feature-tag">AI Automation Engineer & Systems Lead · 2023–2026</div>
+        <h3>Rabbit Marketing Housee</h3>
+        <p>Built every AI system the agency runs on — n8n pipelines, Claude-powered tools, Typebot chatbots, Flutter apps, and self-hosted infrastructure. 30+ production AI apps shipped.</p>
+        <div class="ai-chips">
+          <span class="aichip">Claude AI</span><span class="aichip">n8n</span><span class="aichip">Typebot</span>
+          <span class="aichip">EasyPanel</span><span class="aichip">PostgreSQL</span><span class="aichip">NocoDB</span>
+          <span class="aichip">Flutter</span><span class="aichip">Prompt Engineering</span>
+        </div>
+        <div class="ai-feature-img">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80" alt="automation workflow"/>
+        </div>
+        <div class="ai-stats-row">
+          <div class="ai-stat-box"><div class="n">30<sup>+</sup></div><div class="l">AI apps shipped</div></div>
+          <div class="ai-stat-box"><div class="n">20<sup>+</sup></div><div class="l">Clients automated</div></div>
+        </div>
+      </div>
+      <div class="ai-sides">
+        <div class="ai-side rev d1">
+          <div class="ai-side-head"><div class="ai-side-icon">⚡</div><div><div class="ai-side-title">n8n Automation Pipelines</div><div class="ai-side-cat">Workflow Automation</div></div></div>
+          <div class="ai-side-desc">Production pipelines for Meta leads, WooCommerce orders, ClickUp summaries, WhatsApp bots, and LinkedIn AI posts — live across 20+ clients.</div>
+        </div>
+        <div class="ai-side rev d2">
+          <div class="ai-side-head"><div class="ai-side-icon">🤖</div><div><div class="ai-side-title">Claude AI + Flutter Apps</div><div class="ai-side-cat">AI + Mobile</div></div></div>
+          <div class="ai-side-desc">Flutter apps with Claude at the core — structured prompt engineering, context management, live automation backends for Android & iOS.</div>
+        </div>
+        <div class="ai-side rev d3">
+          <div class="ai-side-head"><div class="ai-side-icon">💬</div><div><div class="ai-side-title">AI Chatbot Systems</div><div class="ai-side-cat">Conversational AI</div></div></div>
+          <div class="ai-side-desc">Gemini AI hotel chatbot and Typebot bicycle finder — both live in production for real clients with CRM integration and lead capture.</div>
+        </div>
+        <div class="ai-side rev d4">
+          <div class="ai-side-head"><div class="ai-side-icon">🏗️</div><div><div class="ai-side-title">Self-hosted Infrastructure</div><div class="ai-side-cat">DevOps & OSS</div></div></div>
+          <div class="ai-side-desc">EasyPanel, PostgreSQL, NocoDB, VPS deployment, Docker — full control, no vendor lock-in, running everything in-house.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap sec-pad">
+    <div class="sec-tag rev">Work</div>
+    <h2 class="sec-h rev d1">Projects &amp; <em>Systems Built</em></h2>
+
+    <div class="proj-grid">
+
+      <!-- FEATURED: 30 Mini Apps -->
+      <div class="proj-card feat rev d1" onclick="openModal('miniapps')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80" alt="AI mini apps"/>
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">AI Mini Apps Ecosystem — Featured</div>
+          <div class="proj-name">30+ AI Mini Apps — The Bunny Suite</div>
+          <div class="proj-desc">31 Claude AI-powered tools — Story Forge, Cyber Bunny Forensics, Wisdom Seeker, Bunny's Kitchen and 27 more. Each solves one problem, fast.</div>
+          <div class="proj-chips">
+            <span class="pchip">Claude AI</span><span class="pchip">Claude Code</span><span class="pchip">n8n</span><span class="pchip">31 apps</span>
+          </div>
+        </div>
+        <button class="proj-cta accent-btn" onclick="event.stopPropagation();openModal('miniapps')">View All 30+ Apps →</button>
+      </div>
+
+      <!-- n8n -->
+      <div class="proj-card rev d2" onclick="openModal('n8n')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=700&q=80" alt="n8n automation"/>
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Workflow Automation</div>
+          <div class="proj-name">n8n Automation Systems</div>
+          <div class="proj-desc">Meta leads → Telegram, WooCommerce → Sheets, ClickUp → WhatsApp, LinkedIn AI posts, image-to-video flows — live across 20+ clients.</div>
+          <div class="proj-chips"><span class="pchip">n8n</span><span class="pchip">PostgreSQL</span><span class="pchip">Telegram</span><span class="pchip">WhatsApp</span></div>
+        </div>
+        <button class="proj-cta" onclick="event.stopPropagation();openModal('n8n')">View Details →</button>
+      </div>
+
+      <!-- Flutter -->
+      <div class="proj-card rev d3" onclick="openModal('flutter')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&q=80" alt="Flutter apps"/>
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">AI + Mobile · Android & iOS</div>
+          <div class="proj-name">Flutter Apps — User, Vendor & Admin</div>
+          <div class="proj-desc">UPVC Window Service platform (user + vendor + admin) and a Grocery Delivery app — both on Android & iOS built with Claude Code.</div>
+          <div class="proj-chips"><span class="pchip">Flutter</span><span class="pchip">Claude Code</span><span class="pchip">Android</span><span class="pchip">iOS</span></div>
+        </div>
+        <button class="proj-cta" onclick="event.stopPropagation();openModal('flutter')">View Details →</button>
+      </div>
+
+      <!-- PM Tool -->
+      <div class="proj-card rev d2" onclick="openModal('pmtool')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=700&q=80" alt="Project management"/>
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Internal Tool</div>
+          <div class="proj-name">Lock-Based Project Management</div>
+          <div class="proj-desc">Custom PM tool with lock-based access controls, AI task breakdown, live tracking, and Telegram notifications for daily agency ops.</div>
+          <div class="proj-chips"><span class="pchip">Claude AI</span><span class="pchip">NocoDB</span><span class="pchip">n8n</span><span class="pchip">PostgreSQL</span></div>
+        </div>
+        <button class="proj-cta" onclick="event.stopPropagation();openModal('pmtool')">View Details →</button>
+      </div>
+
+      <!-- Chatbots -->
+      <div class="proj-card rev d3" onclick="openModal('chatbots')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80" alt="Chatbot"/>
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Conversational AI · Live Deployments</div>
+          <div class="proj-name">AI Chatbot Systems</div>
+          <div class="proj-desc">Gemini AI hotel chatbot for hotelsadhabishegam.com and a Typebot bicycle finder for trackandtrail.in — both live for real customers.</div>
+          <div class="proj-chips"><span class="pchip">Typebot</span><span class="pchip">Gemini AI</span><span class="pchip">n8n</span><span class="pchip">WhatsApp</span></div>
+        </div>
+        <button class="proj-cta" onclick="event.stopPropagation();openModal('chatbots')">View Details →</button>
+      </div>
+
+      <!-- Plugins & Tools -->
+      <div class="proj-card rev d4" onclick="openModal('tools')">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80" alt="Plugins and tools"/>
+          <div class="proj-img-overlay"></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Plugins, Tools & Internal Systems</div>
+          <div class="proj-name">WP Plugins, Shopify App & Internal Tools</div>
+          <div class="proj-desc">2 WooCommerce plugins, Shopify OTP login app, Akaunting fork, and Mitrin Language School invoice system — all AI-assisted development.</div>
+          <div class="proj-chips"><span class="pchip">PHP</span><span class="pchip">WordPress</span><span class="pchip">Shopify</span><span class="pchip">Claude Code</span></div>
+        </div>
+        <button class="proj-cta" onclick="event.stopPropagation();openModal('tools')">View Details →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap sec-pad">
+    <div class="sec-tag rev">Stack</div>
+    <h2 class="sec-h rev d1">Tools I <em>Work With</em></h2>
+    <div class="skills-grid">
+      <div class="sk-card rev d1"><div class="sk-name">AI & Automation</div>
+        <div class="ski core"><span class="sdot"></span>Claude AI Development</div>
+        <div class="ski core"><span class="sdot"></span>n8n Workflow Automation</div>
+        <div class="ski core"><span class="sdot"></span>Prompt Engineering</div>
+        <div class="ski core"><span class="sdot"></span>Typebot Chatbots</div>
+        <div class="ski"><span class="sdot"></span>API Integrations</div>
+        <div class="ski"><span class="sdot"></span>Webhooks</div>
+        <div class="ski"><span class="sdot"></span>CRM Automation</div>
+      </div>
+      <div class="sk-card rev d2"><div class="sk-name">Infrastructure & OSS</div>
+        <div class="ski core"><span class="sdot"></span>EasyPanel</div>
+        <div class="ski core"><span class="sdot"></span>Self-hosted Systems</div>
+        <div class="ski core"><span class="sdot"></span>PostgreSQL</div>
+        <div class="ski core"><span class="sdot"></span>NocoDB</div>
+        <div class="ski"><span class="sdot"></span>VPS Deployment</div>
+        <div class="ski"><span class="sdot"></span>Docker Basics</div>
+        <div class="ski"><span class="sdot"></span>Gotenberg PDF API</div>
+      </div>
+      <div class="sk-card rev d3"><div class="sk-name">Development</div>
+        <div class="ski core"><span class="sdot"></span>Flutter (Android & iOS)</div>
+        <div class="ski core"><span class="sdot"></span>WordPress / WooCommerce</div>
+        <div class="ski core"><span class="sdot"></span>Shopify</div>
+        <div class="ski"><span class="sdot"></span>PHP</div>
+        <div class="ski"><span class="sdot"></span>Claude Code</div>
+        <div class="ski"><span class="sdot"></span>OpenAI Codex</div>
+        <div class="ski"><span class="sdot"></span>GitHub Copilot</div>
+      </div>
+      <div class="sk-card rev d1"><div class="sk-name">Analytics & MarTech</div>
+        <div class="ski core"><span class="sdot"></span>GA4</div>
+        <div class="ski core"><span class="sdot"></span>Google Tag Manager</div>
+        <div class="ski core"><span class="sdot"></span>Meta Pixel & CAPI</div>
+        <div class="ski"><span class="sdot"></span>Looker Studio</div>
+        <div class="ski"><span class="sdot"></span>Supermetrics</div>
+        <div class="ski"><span class="sdot"></span>Microsoft Clarity</div>
+      </div>
+      <div class="sk-card rev d2"><div class="sk-name">Growth & Paid Media</div>
+        <div class="ski core"><span class="sdot"></span>Meta Ads (4× Certified)</div>
+        <div class="ski core"><span class="sdot"></span>Funnel Optimisation</div>
+        <div class="ski core"><span class="sdot"></span>Conversion Tracking</div>
+        <div class="ski"><span class="sdot"></span>Performance Reporting</div>
+        <div class="ski"><span class="sdot"></span>Lead Generation</div>
+      </div>
+      <div class="sk-card rev d3"><div class="sk-name">Ops & Systems</div>
+        <div class="ski core"><span class="sdot"></span>Agency Operations</div>
+        <div class="ski core"><span class="sdot"></span>Internal Tool Building</div>
+        <div class="ski core"><span class="sdot"></span>Workflow Design</div>
+        <div class="ski"><span class="sdot"></span>Team Building (15-member)</div>
+        <div class="ski"><span class="sdot"></span>Project Management</div>
+      </div>
+    </div>
+    <p style="font-size:.6rem;font-weight:500;color:var(--muted);margin-top:.8rem;letter-spacing:.06em"><span style="color:var(--accent)">●</span> Core / daily-use &nbsp; ○ Supporting</p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap sec-pad">
+    <div class="sec-tag rev">Experience</div>
+    <h2 class="sec-h rev d1">7 Years, <em>Two Eras</em></h2>
+    <p class="sec-sub rev d2">3+ years in AI automation. 4+ years before that in performance marketing — which is why I understand the business problems I automate.</p>
+
+    <div class="exp-label rev">Primary — AI Automation (3+ years)</div>
+    <div class="exp-cards">
+      <div class="exp-card rev d2">
+        <div class="exp-hd" onclick="toggleExp(this)">
+          <div>
+            <div class="exp-co">Rabbit Marketing Housee</div>
+            <div class="exp-role">AI Automation Engineer & Systems Lead</div>
+            <div class="exp-badge">Primary Role</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-period">Jun 2023 – Apr 2026</div>
+            <div class="exp-loc">Chennai, India</div>
+            <div class="exp-chevron open" id="ch1">▾</div>
+          </div>
+        </div>
+        <div class="exp-body on">
+          <ul class="exp-ul">
+            <li>Built AI-powered workflow systems using Claude AI, replacing manual processes across the agency.</li>
+            <li>Shipped 30+ AI mini apps for automation, reporting, productivity, and operations.</li>
+            <li>Developed n8n pipelines for Meta Ads, lead management, Telegram, and internal ops.</li>
+            <li>Built chatbot systems on Typebot with AI backends for lead qualification and support.</li>
+            <li>Developed Flutter apps (Android & iOS) integrated with automation workflows.</li>
+            <li>Managed self-hosted infra: EasyPanel, PostgreSQL, NocoDB, VPS, Docker.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-card rev d3">
+        <div class="exp-hd" onclick="toggleExp(this)">
+          <div>
+            <div class="exp-co">Rabbit Marketing Housee</div>
+            <div class="exp-role">Head of Growth</div>
+            <div class="exp-badge" style="background:var(--green2);color:var(--green);border-color:#A7F3D0">Concurrent Role</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-period">Jun 2023 – Apr 2026</div>
+            <div class="exp-loc">Chennai, India</div>
+            <div class="exp-chevron" id="ch2">▸</div>
+          </div>
+        </div>
+        <div class="exp-body">
+          <ul class="exp-ul">
+            <li>Led growth strategy and performance marketing for 20+ active clients.</li>
+            <li>Scaled the agency from a 2-person startup to a 15-member specialised team.</li>
+            <li>Directed 50+ conversion-focused websites with paid and organic acquisition systems.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="past-box rev d3">
+      <button class="past-toggle" onclick="togglePast(this)">
+        <div class="past-toggle-l">
+          <div class="past-toggle-title">Other Experience — 4+ years in performance marketing</div>
+          <div class="past-toggle-sub">Pre-2023 · Context for why I understand the business problems I automate</div>
+        </div>
+        <div class="past-chevron" id="past-ch">▸</div>
+      </button>
+      <div class="past-entries">
+
+        <div class="past-row">
+          <div class="past-row-top">
+            <div>
+              <div class="past-co">Paragon Digital Services <span style="color:var(--muted);font-size:.68rem;font-weight:400">(a dentsu company)</span></div>
+              <div class="past-role-t">Paid Media Associate</div>
+            </div>
+            <div>
+              <div class="past-period-t">Dec 2020 – Jun 2023</div>
+              <div class="past-note-t">$7.2M+ ad spend</div>
+            </div>
+          </div>
+          <ul class="past-bullets">
+            <li>Managed enterprise Meta and Twitter advertising for global accounts with $7.2M+ cumulative ad spend (~₹60Cr INR).</li>
+            <li>Focused on analytics, campaign optimisation, and reporting workflows across multiple international client accounts.</li>
+            <li>Worked within a dentsu group company — large-scale agency operations and global brand management.</li>
+          </ul>
+        </div>
+
+        <div class="past-row">
+          <div class="past-row-top">
+            <div>
+              <div class="past-co">GUVI Geek Network</div>
+              <div class="past-role-t">Digital Marketing Specialist</div>
+            </div>
+            <div>
+              <div class="past-period-t">Dec 2019 – Dec 2020</div>
+              <div class="past-note-t">2× revenue · 4× lead gen</div>
+            </div>
+          </div>
+          <ul class="past-bullets">
+            <li>Managed Meta Ads, lead generation, email marketing, and campaign optimisation for an edtech platform.</li>
+            <li>Increased direct sales revenue by 2× and lead generation by 4× through performance-focused paid media.</li>
+          </ul>
+        </div>
+
+        <div class="past-row">
+          <div class="past-row-top">
+            <div>
+              <div class="past-co">Gramiyum</div>
+              <div class="past-role-t">Digital Marketing Executive</div>
+            </div>
+            <div>
+              <div class="past-period-t">Mar 2019 – Dec 2019</div>
+              <div class="past-note-t">Ecommerce · Paid campaigns</div>
+            </div>
+          </div>
+          <ul class="past-bullets">
+            <li>Managed digital marketing, paid campaigns, and ecommerce website operations for multiple clients.</li>
+            <li>First professional role — built foundation in performance marketing, analytics, and client communication.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact-inner">
+    <div class="sec-tag rev">Contact</div>
+    <h2 class="sec-h rev d1">Let's <em>automate something.</em></h2>
+    <div class="contact-grid">
+      <div class="rev">
+        <div class="contact-img">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" alt="Working together"/>
+        </div>
+        <p class="contact-body">I'm actively looking for full-time AI Automation Engineer roles. If you're building systems that need real operational intelligence — not just chatbots — let's talk.</p>
+        <div class="avail-pill"><div class="blink" style="background:#6EE7A0"></div>Available · Remote or Chennai</div>
+      </div>
+      <div class="rev d2">
+        <div class="clinks">
+          <a href="mailto:mdharoonhaneef@gmail.com" class="clink">
+            <div class="clink-icon">✉</div>
+            <div><div class="clink-lbl">Email</div><div class="clink-val">mdharoonhaneef@gmail.com</div></div>
+          </a>
+          <a href="tel:+917010069287" class="clink">
+            <div class="clink-icon">📞</div>
+            <div><div class="clink-lbl">Phone</div><div class="clink-val">+91 70100 69287</div></div>
+          </a>
+          <a href="https://linkedin.com/in/haroonhaneef" target="_blank" rel="noopener" class="clink">
+            <div class="clink-icon" style="font-weight:700;font-size:.85rem">in</div>
+            <div><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/haroonhaneef</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="ft">© 2026 <span>Mohamed Haroon Haneef</span> · AI Automation Engineer</div>
+    <div class="ft">Built with <span>intention</span>, not templates.</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-bg" id="mbg" onclick="bgClose(event)">
+  <div class="modal-box" id="mbox">
+    <div class="modal-handle"></div>
+    <div class="modal-hd">
+      <div>
+        <div class="m-cat" id="m-cat"></div>
+        <div class="m-title" id="m-title"></div>
+      </div>
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-bd">
+      <div class="m-hero-img" id="m-img"></div>
+      <div class="m-desc" id="m-desc"></div>
+      <div class="m-stack-row" id="m-stack"></div>
+      <div class="m-sub-label" id="m-sub-label"></div>
+      <div class="m-cards" id="m-cards"></div>
+      <div id="m-link"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── MODAL DATA ── */
+const D = {
+  miniapps:{
+    cat:'AI Mini Apps Ecosystem',title:'30+ AI Mini Apps — The Bunny Suite',
+    img:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&q=80',
+    desc:'31 focused Claude AI-powered single-purpose tools. Each eliminates one specific manual task. Built with Claude Code, OpenAI Codex, and GitHub Copilot.',
+    stack:['Claude AI','Claude Code','OpenAI Codex','GitHub Copilot','NocoDB','n8n','EasyPanel'],
+    appList:[
+      'Merry-Logo','Bunny\'s Kitchen','Sollu-Bit','Bunny\'s Tune Music',
+      'Bunny Review Generator','Justice Bunny','Story Forge','RMH Mini Tools',
+      'Bunny Cinephile','Happy Harmones Tester','Cyber Bunny Forensics',
+      'Bunny\'s MarketingMind AI','Bunny\'s Mystery Hub','Bunny Rent Finder',
+      'Bunny\'s Portfolio Creator','Let\'s Argue Bunny','Bunny\'s No Go Zone',
+      'Bunny\'s Career Guidance','Bunny\'s Flame Keeper','Bunny My Prakriti',
+      'Bunny Quizzer','Bunny\'s Roadmap','Wisdom Seeker','The Rabbit Hole',
+      'Bunny Verify','Bunny\'s Emoji','Bunny WebSnap','Chef Bunny',
+      'Bunny the Analyzer','Bunny\'s Color Wheel','Bunny\'s Plant Scanner',
+    ],
+    link:'https://tinyurl.com/Haroon-30-mini-apps',linkLabel:'View Full List & Details ↗',
+  },
+  n8n:{
+    cat:'Workflow Automation',title:'n8n Automation Systems',
+    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80',
+    desc:'Production automation pipelines on self-hosted n8n — running live across 20+ client accounts. Built using Claude Code and GitHub Copilot.',
+    stack:['n8n','PostgreSQL','Telegram Bot API','WhatsApp API','Meta Ads API','Google Sheets API','ClickUp API','LinkedIn API','Webhooks'],
+    subLabel:'Automations built',
+    projects:[
+      {img:'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80',name:'Meta Ads Leads → Telegram',desc:'Every new Meta lead instantly sent to the sales team via a formatted Telegram message with name, number, and source.'},
+      {img:'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80',name:'WooCommerce Orders → Google Sheets',desc:'New orders auto-logged into Google Sheets with product details, customer info, amount, and status in real time.'},
+      {img:'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80',name:'ClickUp AI Summary → WhatsApp',desc:'ClickUp task updates trigger an AI summary sent directly to the relevant team member via WhatsApp.'},
+      {img:'https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=600&q=80',name:'WhatsApp Chatbot Automation',desc:'Customer queries on WhatsApp automatically routed, answered with AI, and escalated to human agents via n8n.'},
+      {img:'https://images.unsplash.com/photo-1536240478700-b869ad10e128?w=600&q=80',name:'Image Upload → Auto Video',desc:'Form submission with an image triggers an automated pipeline that converts the image into a video and delivers it.'},
+      {img:'https://images.unsplash.com/photo-1611944212129-29977ae1398c?w=600&q=80',name:'LinkedIn AI Post Automation',desc:'Generates and schedules LinkedIn posts from a topic input and brand voice — fully automated from idea to published post.'},
+    ],
+  },
+  flutter:{
+    cat:'AI + Mobile · Android & iOS',title:'Flutter Apps — User, Vendor & Admin',
+    img:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=80',
+    desc:'Production Flutter apps for Android and iOS with separate user, vendor, and admin roles. Built using Claude Code, OpenAI Codex, and GitHub Copilot.',
+    stack:['Flutter','Dart','REST APIs','Claude Code','OpenAI Codex','GitHub Copilot','Android','iOS'],
+    subLabel:'Apps built',
+    projects:[
+      {img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',name:'UPVC Window Service — User App',desc:'Customer app to browse services, book window jobs, track status, and receive real-time updates.'},
+      {img:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',name:'UPVC Window Service — Vendor App',desc:'Vendor-side app for accepting jobs, managing schedules, updating status, and submitting completion reports.'},
+      {img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',name:'UPVC Window Service — Admin Panel',desc:'Full admin dashboard for managing vendors, customers, job assignments, analytics, and invoicing.'},
+      {img:'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=80',name:'Grocery Delivery App — Android & iOS',desc:'Full grocery platform with product catalogue, cart, order tracking, and delivery management for both platforms.'},
+    ],
+  },
+  pmtool:{
+    cat:'Internal Tool',title:'Lock-Based Project Management System',
+    img:'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=900&q=80',
+    desc:'Custom PM tool built for the agency — lock-based access controls, AI task breakdown, live status tracking, full audit log, and Telegram notifications. Built with Claude Code.',
+    stack:['Claude AI','Claude Code','NocoDB','n8n','PostgreSQL','EasyPanel','Telegram API'],
+    subLabel:'Key features',
+    projects:[
+      {img:'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80',name:'Lock-Based Edit System',desc:'Only one team member can edit a record at a time — locks apply on open, release on save, preventing data conflicts.'},
+      {img:'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80',name:'AI Task Breakdown',desc:'Describe the goal in plain text — Claude AI instantly generates a structured task list with steps and suggested assignees.'},
+      {img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80',name:'Client Portals & Telegram Alerts',desc:'Scoped client portals showing only their projects, with Telegram notifications on every status change and assignment.'},
+      {img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',name:'Audit Log & Timeline',desc:'Full audit trail with timestamps and user attribution. Timeline view with dependency tracking across all client work.'},
+    ],
+  },
+  chatbots:{
+    cat:'Conversational AI · Live Deployments',title:'AI Chatbot Systems',
+    img:'https://images.unsplash.com/photo-1596526131083-e8c633064926?w=900&q=80',
+    desc:'AI-powered chatbots and choice-based conversational flows deployed for real clients. Built using Typebot, Gemini AI, and n8n automation backends.',
+    stack:['Typebot','Gemini AI','n8n','WhatsApp API','CRM APIs','Telegram','PostgreSQL'],
+    subLabel:'Live deployments & systems',
+    projects:[
+      {img:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80',name:'Hotel Sadhabishegam — AI Chatbot',desc:'Gemini AI-powered chatbot answering guest questions about rooms, facilities, pricing, and availability — plus lead capture routed to front desk.',link:'https://hotelsadhabishegam.com',linkLabel:'Visit Site ↗'},
+      {img:'https://images.unsplash.com/photo-1571333250630-f0230c320b6d?w=600&q=80',name:'Track & Trail — Bicycle Finder',desc:'Typebot choice-based flow guiding customers through riding style, terrain, budget, and experience to recommend the right bicycle.',link:'https://trackandtrail.in',linkLabel:'Visit Site ↗'},
+      {img:'https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=600&q=80',name:'WhatsApp Chatbot Automation',desc:'Customer queries on WhatsApp routed, answered with AI, and escalated to human agents with full context via n8n.'},
+      {img:'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80',name:'Lead Qualification Flows',desc:'Multi-step qualification bots with scoring, CRM auto-entry, and team notification on WhatsApp or Telegram.'},
+    ],
+  },
+  tools:{
+    cat:'Plugins, Tools & Internal Systems',title:'WP Plugins, Shopify App & Internal Tools',
+    img:'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80',
+    desc:'Custom plugins, ecommerce apps, and internal business tools — built with Claude Code, OpenAI Codex, and GitHub Copilot.',
+    stack:['PHP','WordPress','WooCommerce','Shopify API','Google Maps API','Claude Code','OpenAI Codex','GitHub Copilot','Akaunting OSS'],
+    subLabel:'Tools & plugins built',
+    projects:[
+      {img:'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=600&q=80',name:'WP Plugin — Courier Invoice & Packing Slip',desc:'Select a local courier and auto-generate a correctly formatted invoice and packing slip for that courier\'s specific requirements.'},
+      {img:'https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=600&q=80',name:'WP Plugin — Distance-Based Shipping',desc:'Calculates and charges shipping fees based on distance between warehouse and delivery address using Google Maps API.'},
+      {img:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80',name:'Shopify App — Mobile OTP Login',desc:'Lets guest customers verify via mobile OTP and check order status without creating an account.'},
+      {img:'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80',name:'Akaunting Fork & Mitrin Invoice System',desc:'Customised Akaunting OSS for internal billing, plus a bespoke invoice system for Mitrin Language School with bilingual support.'},
+    ],
+  },
+};
+
+function openModal(id){
+  const d=D[id]; if(!d) return;
+  document.getElementById('m-cat').textContent=d.cat;
+  document.getElementById('m-title').textContent=d.title;
+  document.getElementById('m-img').innerHTML=`<img src="${d.img}" alt="${d.cat}" style="width:100%;height:100%;object-fit:cover"/>`;
+  document.getElementById('m-desc').textContent=d.desc;
+  document.getElementById('m-stack').innerHTML=d.stack.map(s=>`<span class="mchip">${s}</span>`).join('');
+
+  const subLabel=document.getElementById('m-sub-label');
+  const cards=document.getElementById('m-cards');
+
+  // miniapps: show pill tags list, no project cards
+  if(d.appList){
+    subLabel.textContent='All 31 apps in the ecosystem';
+    subLabel.style.display='block';
+    cards.innerHTML=`<div class="m-app-list">${d.appList.map(a=>`<span class="m-app-tag">${a}</span>`).join('')}</div>`;
+    cards.style.display='block';
+  } else if(d.projects && d.projects.length){
+    subLabel.textContent=d.subLabel||'';
+    subLabel.style.display=d.subLabel?'block':'none';
+    cards.innerHTML=d.projects.map(p=>`
+      <div class="m-card">
+        <div class="m-card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+        <div class="m-card-body">
+          <div class="m-card-name">${p.name}</div>
+          <div class="m-card-desc">${p.desc}</div>
+          ${p.link?`<a href="${p.link}" target="_blank" rel="noopener" class="m-card-link">${p.linkLabel||'Visit ↗'}</a>`:''}
+        </div>
+      </div>`).join('');
+    cards.style.display='grid';
+  } else {
+    subLabel.style.display='none';
+    cards.innerHTML=''; cards.style.display='none';
+  }
+
+  let lhtml='';
+  if(d.link) lhtml=`<a href="${d.link}" target="_blank" rel="noopener" class="m-bottom-link">${d.linkLabel||'View Project ↗'}</a>`;
+  document.getElementById('m-link').innerHTML=lhtml;
+  document.getElementById('mbg').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('mbg').classList.remove('on');document.body.style.overflow=''}
+function bgClose(e){if(e.target===document.getElementById('mbg'))closeModal()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()})
+
+/* ── ACCORDIONS ── */
+function toggleExp(hd){
+  const body=hd.nextElementSibling;
+  const ch=hd.querySelector('.exp-chevron');
+  const on=body.classList.toggle('on');
+  if(ch){ch.textContent=on?'▾':'▸';ch.classList.toggle('open',on)}
+}
+function togglePast(btn){
+  const entries=btn.nextElementSibling;
+  const ch=document.getElementById('past-ch');
+  const on=entries.classList.toggle('on');
+  if(ch){ch.textContent=on?'▾':'▸';ch.classList.toggle('open',on)}
+}
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})
+},{threshold:.1});
+document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+
+/* ── NAV SHADOW ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>30)
+},{passive:true});
+</script>
+</body>
+</html>
